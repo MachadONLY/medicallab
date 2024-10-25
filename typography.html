@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+  <head>
+    <title>Resultados - MedicalLab</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="images/icon.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,900">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+      .ie-panel { display: none; background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0, 0, 0, .3); clear: both; text-align: center; position: relative; z-index: 1; }
+      html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel { display: block; }
+
+      .section-lg {
+        padding: 50px 0;
+      }
+
+      /* Estilo para os cards dos residentes */
+      .resident-card {
+        background-color: #1a1a1a;
+        border-radius: 10px;
+        padding: 20px;
+        color: white;
+        text-align: center;
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        cursor: pointer;
+        width: 250px;
+        margin: 20px auto;
+      }
+
+      .resident-card:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+      }
+
+      .resident-card h3 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 15px;
+      }
+
+      .resident-card p {
+        font-size: 18px;
+      }
+
+      /* Ícones para os cards */
+      .resident-card i {
+        font-size: 50px;
+        margin-bottom: 10px;
+        color: #4caf50;
+      }
+
+      /* Centralizar o nome do residente no header */
+      .header-center {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 18px;
+        color: #fff;
+        font-weight: bold;
+        z-index: 10;
+      }
+
+      .chart-container {
+        width: 300px;
+        margin: auto;
+      }
+
+      .feedback-box {
+        background-color: #f0f8ff;
+        padding: 20px;
+        border-left: 5px solid #4caf50;
+        margin-bottom: 30px;
+      }
+
+      .feedback-box h4 {
+        color: #4caf50;
+      }
+
+      .button-primary {
+        background-color: #4caf50;
+        border-color: #4caf50;
+      }
+
+      .button-primary:hover {
+        background-color: #45a049;
+      }
+
+      /* Ajuste do Título */
+      h2.section-title {
+        margin-top: 30px; /* Espaçamento extra para descer o título */
+      }
+
+      /* Estilos do módulo */
+      .module-info {
+        font-size: 22px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      /* Estilos da data e hora */
+      .date-time-info {
+        font-size: 18px;
+        color: #666;
+        margin-bottom: 20px;
+      }
+
+      /* Estilos para a animação dos gráficos */
+      .chart-animation {
+        animation: bounceIn 1.5s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+    <div class="preloader">
+      <div class="preloader-body">
+        <div class="loader">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <p>Carregando...</p>
+      </div>
+    </div>
+    <div class="page">
+      <header class="section page-header rd-navbar-transparent-wrap">
+        <div class="rd-navbar-wrap">
+          <nav class="rd-navbar rd-navbar-transparent" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-lg-stick-up-offset="20px" data-xl-stick-up-offset="20px" data-xxl-stick-up-offset="20px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+            <div class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle=".rd-navbar-collapse"><span></span></div>
+            <div class="rd-navbar-main-outer">
+              <div class="rd-navbar-main-inner">
+                <div class="rd-navbar-main">
+                  <div class="rd-navbar-panel">
+                    <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                    <div class="rd-navbar-brand">
+                      <a class="brand" href="index.html" style="display: inline-block; text-decoration: none;">
+                        <span style="font-size: 24px; font-weight: bold; color: #ffffff;">MedicalLab</span>
+                      </a>
+                    </div>
+                    <!-- Nome do Residente Centralizado no Header -->
+                    <div class="header-center" id="residentName">Resultados dos Residentes</div>
+                  </div>
+                  <div class="rd-navbar-main-element">
+                    <div class="rd-navbar-nav-wrap">
+                      <ul class="rd-navbar-nav">
+                        <li class="rd-nav-item"><a class="rd-nav-link" href="index.html">Home</a></li>
+                        <li class="rd-nav-item"><a class="rd-nav-link" href="about.html">Sobre</a></li>
+                        <li class="rd-nav-item active"><a class="rd-nav-link" href="resultados.html">Resultados</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Seção de Seleção de Residentes -->
+      <section class="section section-lg bg-gray-100">
+        <div class="container text-center">
+          <h2 class="section-title">Selecione o Residente</h2>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="resident-card" style="background-color: #345A8A; color: white; padding: 30px; border-radius: 10px; cursor: pointer;" onclick="changeResident(1)">
+                <i class="fa fa-user-md" style="font-size: 48px; color: white;"></i>
+                <h3 style="color: white;">Residente 01</h3>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="resident-card" style="background-color: #345A8A; color: white; padding: 30px; border-radius: 10px; cursor: pointer;" onclick="changeResident(2)">
+                <i class="fa fa-user-md" style="font-size: 48px; color: white;"></i>
+                <h3 style="color: white;">Residente 02</h3>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="resident-card" style="background-color: #345A8A; color: white; padding: 30px; border-radius: 10px; cursor: pointer;" onclick="changeResident(3)">
+                <i class="fa fa-user-md" style="font-size: 48px; color: white;"></i>
+                <h3 style="color: white;">Residente 03</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção de Resultados -->
+      <section class="section section-lg bg-gray-100" id="resultSection">
+        <div class="container text-center">
+          <h2 class="section-title">Resultados do <span class="text-light">SurgiQuest</span></h2>
+
+          <!-- Exibição da data e hora -->
+          <div class="date-time-info">
+            Data do Treinamento: <span id="trainingDateTime"></span>
+          </div>
+
+          <!-- Nome do Módulo -->
+          <div class="module-info">Módulo: Incisão Básica</div>
+
+          <div class="row row-50">
+            <!-- Gráfico de Precisão -->
+            <div class="col-md-6 col-lg-4">
+              <div class="chart-container chart-animation">
+                <canvas id="chartPrecisao"></canvas>
+              </div>
+              <p id="precisaoTexto">Precisão de Corte: 85%</p>
+            </div>
+            <!-- Gráfico de Tempo -->
+            <div class="col-md-6 col-lg-4">
+              <div class="chart-container chart-animation">
+                <canvas id="chartTempo"></canvas>
+              </div>
+              <p id="tempoTexto">Tempo Total: 00:09.42</p>
+            </div>
+            <!-- Gráfico de Erros -->
+            <div class="col-md-6 col-lg-4">
+              <div class="chart-container chart-animation">
+                <canvas id="chartErros"></canvas>
+              </div>
+              <p id="errosTexto">Erros Cometidos: 3</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Feedback do Tutor -->
+      <section class="section section-lg bg-default">
+        <div class="container">
+          <div class="feedback-box">
+            <h4>Feedback do Tutor</h4>
+            <p id="feedbackTexto">O residente apresentou um bom desempenho geral no módulo "Incisão Básica".</p>
+            <p><strong>Avaliação Final:</strong> <span id="avaliacaoFinal" style="color: green;">Bom</span></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Seção de Conclusão -->
+      <section class="section section-lg bg-gray-800">
+        <div class="container text-center">
+          <h2>Conclusão<span class="text-light"></span></h2>
+          <p>Os resultados indicam um desempenho geral bom, mas sugerimos focar na redução dos erros e aprimorar a precisão nos próximos módulos. Continue praticando para alcançar a excelência.</p>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="section footer-classic">
+        <div class="footer-inner-2">
+          <div class="container">
+            <p class="rights"><span>&copy;&nbsp;</span><span class="copyright-year"></span>. Todos os Direitos Reservados.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <div class="snackbars" id="form-output-global"></div>
+    <script src="js/core.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- Adicionando ícones FontAwesome -->
+    <script>
+      const animationOptions = {
+        duration: 5000, // duração da animação
+        easing: 'easeOutBounce' // efeito de animação
+      };
+
+      let precisaoData = [85, 15];
+      let tempoData = [9, 1];
+      let errosData = [3, 7];
+
+      const ctxPrecisao = document.getElementById('chartPrecisao').getContext('2d');
+      const chartPrecisao = new Chart(ctxPrecisao, {
+        type: 'doughnut',
+        data: {
+          labels: ['Precisão', 'Faltante'],
+          datasets: [{
+            data: precisaoData,
+            backgroundColor: ['#4caf50', '#e0e0e0'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          animation: animationOptions
+        }
+      });
+
+      const ctxTempo = document.getElementById('chartTempo').getContext('2d');
+      const chartTempo = new Chart(ctxTempo, {
+        type: 'doughnut',
+        data: {
+          labels: ['Tempo', 'Faltante'],
+          datasets: [{
+            data: tempoData,
+            backgroundColor: ['#ff9800', '#e0e0e0'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          animation: animationOptions
+        }
+      });
+
+      const ctxErros = document.getElementById('chartErros').getContext('2d');
+      const chartErros = new Chart(ctxErros, {
+        type: 'doughnut',
+        data: {
+          labels: ['Erros', 'Correto'],
+          datasets: [{
+            data: errosData,
+            backgroundColor: ['#f44336', '#e0e0e0'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          animation: animationOptions
+        }
+      });
+
+      function changeResident(resident) {
+        const residentName = document.getElementById('residentName');
+        const feedbackTexto = document.getElementById('feedbackTexto');
+        const avaliacaoFinal = document.getElementById('avaliacaoFinal');
+        const precisaoTexto = document.getElementById('precisaoTexto');
+        const tempoTexto = document.getElementById('tempoTexto');
+        const errosTexto = document.getElementById('errosTexto');
+        const resultSection = document.getElementById('resultSection'); // Seção dos gráficos
+
+        if (resident === 1) {
+          residentName.textContent = 'Residente: Residente 01';
+          feedbackTexto.textContent = 'Excelente desempenho! O residente demonstrou uma precisão excepcional durante o procedimento. Continue assim para manter o nível de excelência.';
+          avaliacaoFinal.textContent = 'Excelente';
+          avaliacaoFinal.style.color = 'green';
+          precisaoData = [95, 5];
+          tempoData = [8, 2];
+          errosData = [1, 9];
+          precisaoTexto.textContent = 'Precisão de Corte: 95%';
+          tempoTexto.textContent = 'Tempo Total: 00:08.00';
+          errosTexto.textContent = 'Erros Cometidos: 1';
+        } else if (resident === 2) {
+          residentName.textContent = 'Residente: Residente 02';
+          feedbackTexto.textContent = 'Bom desempenho geral. O residente teve uma boa precisão, mas deve continuar praticando para reduzir os pequenos erros.';
+          avaliacaoFinal.textContent = 'Bom';
+          avaliacaoFinal.style.color = 'orange';
+          precisaoData = [85, 15];
+          tempoData = [9, 1];
+          errosData = [3, 7];
+          precisaoTexto.textContent = 'Precisão de Corte: 85%';
+          tempoTexto.textContent = 'Tempo Total: 00:09.42';
+          errosTexto.textContent = 'Erros Cometidos: 3';
+        } else if (resident === 3) {
+          residentName.textContent = 'Residente: Residente 03';
+          feedbackTexto.textContent = 'Desempenho abaixo do esperado. O residente precisa focar mais na precisão e reduzir os erros durante o procedimento.';
+          avaliacaoFinal.textContent = 'Ruim';
+          avaliacaoFinal.style.color = 'red';
+          precisaoData = [60, 40];
+          tempoData = [11, 0];
+          errosData = [5, 5];
+          precisaoTexto.textContent = 'Precisão de Corte: 60%';
+          tempoTexto.textContent = 'Tempo Total: 00:11.00';
+          errosTexto.textContent = 'Erros Cometidos: 5';
+        }
+
+        // Atualizar gráficos
+        chartPrecisao.data.datasets[0].data = precisaoData;
+        chartPrecisao.update();
+
+        chartTempo.data.datasets[0].data = tempoData;
+        chartTempo.update();
+
+        chartErros.data.datasets[0].data = errosData;
+        chartErros.update();
+
+        // Rolar automaticamente para a seção dos gráficos
+        resultSection.scrollIntoView({ behavior: 'smooth' });
+      }
+
+      // Adiciona a data e hora atuais
+      const now = new Date();
+      const formattedDateTime = now.toLocaleDateString('pt-BR', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+      document.getElementById('trainingDateTime').textContent = formattedDateTime;
+    </script>
+  </body>
+</html>
