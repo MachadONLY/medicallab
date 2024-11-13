@@ -336,39 +336,40 @@
         const resultSection = document.getElementById('resultSection'); // Seção dos gráficos
 
         if (resident === 1) {
-          residentName.textContent = 'Residente: Residente 01';
-          feedbackTexto.textContent = 'Excelente desempenho! O residente demonstrou uma precisão excepcional durante o procedimento. Continue assim para manter o nível de excelência.';
-          avaliacaoFinal.textContent = 'Excelente';
-          avaliacaoFinal.style.color = 'green';
-          precisaoData = [95, 5];
-          tempoData = [8, 2];
-          errosData = [1, 9];
-          precisaoTexto.textContent = 'Precisão de Corte: 95%';
-          tempoTexto.textContent = 'Tempo Total: 00:08.00';
-          errosTexto.textContent = 'Erros Cometidos: 1';
-        } else if (resident === 2) {
-          residentName.textContent = 'Residente: Residente 02';
-          feedbackTexto.textContent = 'Bom desempenho geral. O residente teve uma boa precisão, mas deve continuar praticando para reduzir os pequenos erros.';
-          avaliacaoFinal.textContent = 'Bom';
-          avaliacaoFinal.style.color = 'orange';
-          precisaoData = [85, 15];
-          tempoData = [9, 1];
-          errosData = [3, 7];
-          precisaoTexto.textContent = 'Precisão de Corte: 85%';
-          tempoTexto.textContent = 'Tempo Total: 00:09.42';
-          errosTexto.textContent = 'Erros Cometidos: 3';
-        } else if (resident === 3) {
-          residentName.textContent = 'Residente: Residente 03';
-          feedbackTexto.textContent = 'Desempenho abaixo do esperado. O residente precisa focar mais na precisão e reduzir os erros durante o procedimento.';
-          avaliacaoFinal.textContent = 'Ruim';
-          avaliacaoFinal.style.color = 'red';
-          precisaoData = [60, 40];
-          tempoData = [11, 0];
-          errosData = [5, 5];
-          precisaoTexto.textContent = 'Precisão de Corte: 60%';
-          tempoTexto.textContent = 'Tempo Total: 00:11.00';
-          errosTexto.textContent = 'Erros Cometidos: 5';
-        }
+  residentName.textContent = 'Residente: Residente 01';
+  feedbackTexto.textContent = 'Desempenho excelente! O residente mostrou uma precisão quase perfeita durante o procedimento. Continue assim!';
+  avaliacaoFinal.textContent = 'Excelente';
+  avaliacaoFinal.style.color = 'green';
+  precisaoData = [98, 2];
+  tempoData = [8, 2];
+  errosData = [0, 10];
+  precisaoTexto.textContent = 'Precisão de Corte: 98%';
+  tempoTexto.textContent = 'Tempo Total: 00:08.00';
+  errosTexto.textContent = 'Erros Cometidos: 0';
+} else if (resident === 2) {
+  residentName.textContent = 'Residente: Residente 02';
+  feedbackTexto.textContent = 'Desempenho bom, mas há espaço para melhorar a precisão e reduzir pequenos erros.';
+  avaliacaoFinal.textContent = 'Bom';
+  avaliacaoFinal.style.color = 'orange';
+  precisaoData = [80, 20];
+  tempoData = [9, 1];
+  errosData = [3, 7];
+  precisaoTexto.textContent = 'Precisão de Corte: 80%';
+  tempoTexto.textContent = 'Tempo Total: 00:09.42';
+  errosTexto.textContent = 'Erros Cometidos: 3';
+} else if (resident === 3) {
+  residentName.textContent = 'Residente: Residente 03';
+  feedbackTexto.textContent = 'Desempenho abaixo do esperado. O residente cometeu muitos erros e precisa de mais prática para melhorar a precisão.';
+  avaliacaoFinal.textContent = 'Ruim';
+  avaliacaoFinal.style.color = 'red';
+  precisaoData = [50, 50];
+  tempoData = [12, 0];
+  errosData = [10, 0];
+  precisaoTexto.textContent = 'Precisão de Corte: 50%';
+  tempoTexto.textContent = 'Tempo Total: 00:12.00';
+  errosTexto.textContent = 'Erros Cometidos: 10';
+}
+
 
         // Atualizar gráficos
         chartPrecisao.data.datasets[0].data = precisaoData;
